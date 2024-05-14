@@ -12,7 +12,9 @@ const Slider = () => {
   );
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
+      // eslint-disable-next-line
+      //ajout d'un "-", comme la l'indice est à 0 le dernier event(i = 2) sera toujours plus petit que la longueur du tableau (3)
+      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
       5000
     );
   };
