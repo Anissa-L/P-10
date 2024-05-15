@@ -18,6 +18,14 @@ const Slider = () => {
       5000
     );
   };
+
+  let keyIndex = 0;
+
+  const generateKey = () => {
+    keyIndex += 1;
+    return keyIndex.toString();
+  };
+
   useEffect(() => {
     nextCard();
   });
@@ -44,10 +52,11 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((_, radioIdx) => (
                 <input
-                  key={`${event.id}`}
+                  key={generateKey()}
                   type="radio"
                   name="radio-button"
-                  checked={idx === radioIdx}
+                  checked={index === radioIdx}
+                  readOnly="readonly"
                 />
               ))}
             </div>
