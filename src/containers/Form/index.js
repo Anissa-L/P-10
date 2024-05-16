@@ -11,9 +11,6 @@ const mockContactApi = () =>
 
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
-  // rajout: Nouvelle variable d'état
-  const [success, setSuccess] = useState(false);
-  // fin rajout
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
@@ -23,7 +20,6 @@ const Form = ({ onSuccess, onError }) => {
         await mockContactApi();
         setSending(false);
         // rajout
-        setSuccess(true); // Définir success sur true après un envoi réussi
         onSuccess(); // Appeler le callback onSuccess
         // fin rajout
       } catch (err) {
@@ -59,9 +55,6 @@ const Form = ({ onSuccess, onError }) => {
           />
         </div>
       </div>
-      {/* rajout : Condition message de réussite */}
-      {success && <div className="success-message" />}
-      {/* fin rajout */}
     </form>
   );
 };

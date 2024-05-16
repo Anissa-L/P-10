@@ -12,5 +12,6 @@ export const MONTHS = {
   10: "novembre",
   11: "décembre",
 };
-
+// eslint-disable-next-line
+// changement d'index des mois
 export const getMonth = (date) => MONTHS[date.getMonth()];
