@@ -27,6 +27,8 @@ const Slider = () => {
     keyIndex += 1;
     return keyIndex.toString();
   };
+  // eslint-disable-next-line
+  // je crée une fonction qui génère des clés uniques
 
   useEffect(() => {
     nextCard();
@@ -55,9 +57,13 @@ const Slider = () => {
               {byDateDesc.map((_, radioIdx) => (
                 <input
                   key={generateKey()}
+                  // eslint-disable-next-line
+                  // j'appelle la fonction "generateKey"
                   type="radio"
                   name="radio-button"
                   checked={index === radioIdx}
+                  // eslint-disable-next-line
+                  // remplacé "idx" par "index"
                   readOnly="readonly"
                 />
               ))}

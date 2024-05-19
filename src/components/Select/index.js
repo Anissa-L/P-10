@@ -16,9 +16,13 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
+    // eslint-disable-next-line
+    //nouvelle catégorie ajouté à onChange
     onChange(newValue);
     setValue(newValue);
     setCollapsed(!collapsed);
+    // eslint-disable-next-line
+    //met à jour l'état collapsed à false
     // eslint-disable-next-line
     console.log("value:", newValue);
   };

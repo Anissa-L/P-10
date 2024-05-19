@@ -24,13 +24,6 @@ const EventList = () => {
       return false;
     }
   );
-  // console.log ajouté pour vérifié des valeurs
-  // eslint-disable-next-line
-  console.log("data:", data);
-  // eslint-disable-next-line
-  console.log("filteredEvents:", filteredEvents);
-  // eslint-disable-next-line
-  console.log("Current type:", type);
 
   const changeType = (evtType) => {
     setCurrentPage(1);

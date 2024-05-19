@@ -13,9 +13,14 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const { last } = useData();
   // eslint-disable-next-line
-  console.log("last", last);
+  // récupère les données
+  const { data } = useData();
+  // eslint-disable-next-line
+  // trie les évènements du tableau des plus récents aux plus anciens avec la fonction (.sort) et je récupère le premier avec l'indice 0
+  const last = data?.events.sort(
+    (evtA, evtB) => new Date(evtB.date) - new Date(evtA.date)
+  )[0];
 
   return (
     <>
@@ -117,13 +122,18 @@ const Page = () => {
       <footer className="row">
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
-          <EventCard
-            imageSrc={last?.cover}
-            title={last?.title}
-            date={new Date(last?.date)}
-            small
-            label="boom"
-          />
+          {/*  vérifie si "last" est présent */}
+          {last && (
+            <EventCard
+              imageSrc={last?.cover}
+              title={last?.title}
+              date={new Date(last?.date)}
+              small
+              label={last?.type}
+              // eslint-disable-next-line
+              // changement du label "boom"->"last?.type"
+            />
+          )}
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>
