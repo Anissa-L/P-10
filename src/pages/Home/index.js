@@ -31,7 +31,9 @@ const Page = () => {
         <section className="SliderContainer">
           <Slider />
         </section>
-        <section className="ServicesContainer">
+        <section className="ServicesContainer" id="nos-services">
+          {/*  eslint-disable-next-line */}
+          {/* id correspondant au menu ajouté */}
           <h2 className="Title">Nos services</h2>
           <p>Nous organisons des événements sur mesure partout dans le monde</p>
           <div className="ListContainer">
@@ -61,11 +63,19 @@ const Page = () => {
           </div>
         </section>
         <section className="EventsContainer">
-          <h2 className="Title">Nos réalisations</h2>
+          <h2 className="Title" id="nos-realisations">
+            Nos réalisations{" "}
+          </h2>
+          {/*  eslint-disable-next-line */}
+          {/* id correspondant au menu ajouté */}
           <EventList />
         </section>
         <section className="PeoplesContainer">
-          <h2 className="Title">Notre équipe</h2>
+          <h2 className="Title" id="notre-equipe">
+            Notre équipe
+          </h2>
+          {/*  eslint-disable-next-line */}
+          {/* id correspondant au menu ajouté */}
           <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
           <div className="ListContainer">
             <PeopleCard
