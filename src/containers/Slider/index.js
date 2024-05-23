@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { v4 as uuid } from "uuid";
 import { useData } from "../../contexts/DataContext";
 import { getMonth } from "../../helpers/Date";
 
@@ -16,20 +17,11 @@ const Slider = () => {
     setTimeout(
       // eslint-disable-next-line
       // vérification de la valeur de byDateDesc avec l'opérateur de coalescence nullish
-      //ajout d'un "- 1", comme la l'indice est à 0 le dernier event(i = 2) sera toujours plus petit que la longueur du tableau (3)
+      // ajout d'un "- 1", comme la l'indice est à 0 le dernier event(i = 2) sera toujours plus petit que la longueur du tableau (3)
       () => setIndex(index < (byDateDesc?.length ?? 0) - 1 ? index + 1 : 0),
       5000
     );
   };
-
-  let keyIndex = 0;
-
-  const generateKey = () => {
-    keyIndex += 1;
-    return keyIndex.toString();
-  };
-  // eslint-disable-next-line
-  // je crée une fonction qui génère des clés uniques
 
   useEffect(() => {
     nextCard();
@@ -37,9 +29,13 @@ const Slider = () => {
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
-        <>
+        <div key={uuid()}>
+          {/* eslint-disable-next-line */}
+          {/* création de clé unique avec paquage uuid */}
           <div
-            key={event.title}
+            key={uuid()}
+            // eslint-disable-next-line
+            // création de clé unique avec paquage uuid
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
@@ -57,9 +53,9 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((_, radioIdx) => (
                 <input
-                  key={generateKey()}
+                  key={uuid()}
                   // eslint-disable-next-line
-                  // j'appelle la fonction "generateKey"
+                  // création de clé unique avec paquage uuid
                   type="radio"
                   name="radio-button"
                   checked={index === radioIdx}
@@ -70,7 +66,7 @@ const Slider = () => {
               ))}
             </div>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );
