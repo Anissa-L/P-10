@@ -15,8 +15,9 @@ const Slider = () => {
   const nextCard = () => {
     setTimeout(
       // eslint-disable-next-line
-      //ajout d'un "-", comme la l'indice est à 0 le dernier event(i = 2) sera toujours plus petit que la longueur du tableau (3)
-      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
+      // vérification de la valeur de byDateDesc avec l'opérateur de coalescence nullish
+      //ajout d'un "- 1", comme la l'indice est à 0 le dernier event(i = 2) sera toujours plus petit que la longueur du tableau (3)
+      () => setIndex(index < (byDateDesc?.length ?? 0) - 1 ? index + 1 : 0),
       5000
     );
   };
