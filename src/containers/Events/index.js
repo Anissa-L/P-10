@@ -13,8 +13,15 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
-  const filteredEvents = ((!type ? data?.events : data?.events) || []).filter(
-    (event, index) => {
+  const filteredEvents = // eslint-disable-next-line
+    // vérification de type : si pas de type alors il retourne un tableau avec tous les events
+    //                        si type : retourne un tableau avec les events filtrés par type
+    //                        si null ou undefined : retourne un tableau vide
+    (
+      (!type
+        ? data?.events
+        : data?.events.filter((event) => event.type === type)) || []
+    ).filter((event, index) => {
       if (
         (currentPage - 1) * PER_PAGE <= index &&
         PER_PAGE * currentPage > index
@@ -22,8 +29,7 @@ const EventList = () => {
         return true;
       }
       return false;
-    }
-  );
+    });
 
   const changeType = (evtType) => {
     setCurrentPage(1);

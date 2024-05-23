@@ -23,8 +23,6 @@ const Select = ({
     setCollapsed(!collapsed);
     // eslint-disable-next-line
     //met à jour l'état collapsed à false
-    // eslint-disable-next-line
-    console.log("value:", newValue);
   };
 
   return (
